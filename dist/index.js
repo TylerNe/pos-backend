@@ -22,7 +22,14 @@ app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)({
     origin: process.env.NODE_ENV === 'production'
         ? ['https://your-frontend-domain.com']
-        : ['http://localhost:5173', 'http://localhost:3000'],
+        : [
+            'http://localhost:5173',
+            'http://localhost:5174',
+            'http://localhost:5175',
+            'http://localhost:5176',
+            'http://localhost:3000',
+            'file://' // For debug HTML files
+        ],
     credentials: true
 }));
 app.use((0, morgan_1.default)('combined'));
@@ -68,4 +75,3 @@ app.listen(PORT, () => {
     console.log(`📍 API URL: http://localhost:${PORT}/api`);
     console.log(`🏥 Health check: http://localhost:${PORT}/api/health`);
 });
-//# sourceMappingURL=index.js.map

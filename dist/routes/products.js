@@ -11,9 +11,8 @@ const router = express_1.default.Router();
 router.get('/', productController_1.getAllProducts);
 router.get('/categories', productController_1.getCategories);
 router.get('/:id', productController_1.getProductById);
-// Protected routes (require authentication)
-router.post('/', auth_1.authenticateToken, (0, auth_1.requireRole)(['admin', 'cashier']), productController_1.createProduct);
-router.put('/:id', auth_1.authenticateToken, (0, auth_1.requireRole)(['admin', 'cashier']), productController_1.updateProduct);
+// Protected routes (require authentication) - Only admin can manage products
+router.post('/', auth_1.authenticateToken, (0, auth_1.requireRole)(['admin']), productController_1.createProduct);
+router.put('/:id', auth_1.authenticateToken, (0, auth_1.requireRole)(['admin']), productController_1.updateProduct);
 router.delete('/:id', auth_1.authenticateToken, (0, auth_1.requireRole)(['admin']), productController_1.deleteProduct);
 exports.default = router;
-//# sourceMappingURL=products.js.map

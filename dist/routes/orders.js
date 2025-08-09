@@ -13,9 +13,13 @@ router.use(auth_1.authenticateToken);
 router.get('/', (0, auth_1.requireRole)(['admin', 'cashier']), orderController_1.getAllOrders);
 // Get order statistics
 router.get('/stats', (0, auth_1.requireRole)(['admin', 'cashier']), orderController_1.getOrderStats);
+// Analytics endpoints (Admin only)
+router.get('/analytics/daily', (0, auth_1.requireRole)(['admin']), orderController_1.getDailySales);
+router.get('/analytics/monthly', (0, auth_1.requireRole)(['admin']), orderController_1.getMonthlySales);
+router.get('/analytics/yearly', (0, auth_1.requireRole)(['admin']), orderController_1.getYearlySales);
+router.get('/analytics/top-products', (0, auth_1.requireRole)(['admin']), orderController_1.getTopProducts);
 // Get specific order
 router.get('/:id', (0, auth_1.requireRole)(['admin', 'cashier']), orderController_1.getOrderById);
 // Create new order
 router.post('/', (0, auth_1.requireRole)(['admin', 'cashier']), orderController_1.createOrder);
 exports.default = router;
-//# sourceMappingURL=orders.js.map
